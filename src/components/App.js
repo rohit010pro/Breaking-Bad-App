@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import Character from "./Character";
+import Character from "./character";
 import Characters from "./Characters";
 import ErrorPage from "./ErrorPage";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
