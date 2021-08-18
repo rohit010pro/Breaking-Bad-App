@@ -1,6 +1,10 @@
-import Characters from "./Characters";
 import Header from "./Header";
 import Footer from "./Footer";
+import Character from "./Character";
+import Characters from "./Characters";
+import ErrorPage from "./ErrorPage";
+
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
   const characters = [
@@ -72,11 +76,19 @@ const App = () => {
   ];
 
   return (
-    <div className="App">
-      <Header/>
-      <Characters characters={characters} />
-      <Footer/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Characters characters={characters} />
+          </Route>
+          <Route exact path="/character" component={Character}/>
+          <Route exact component={ErrorPage}/>
+        </Switch>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 };
 
