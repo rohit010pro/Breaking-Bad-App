@@ -12,6 +12,13 @@ const Characters = (props) => {
     setCurrentPage(Number(e.target.id));
   }
 
+  const previous = () => {
+    setCurrentPage(currentPage -1);
+  }
+  const next = () => {
+    setCurrentPage(currentPage +1);
+  }
+
   const pages = [];
   for (let i = 1; i <= Math.ceil(characters.length / itemPerPage); i++)
     pages.push(i);
@@ -52,7 +59,11 @@ const Characters = (props) => {
             }
           </div>
       }
-      <ul className="pagination">{pageNumbers}</ul>
+      <ul className="pagination">
+        { currentPage !== 1 && <li><span class="prev" onClick={previous}>&laquo;</span></li> }
+        {pageNumbers}
+        { currentPage !== pages.length && <li><span class="next" onClick={next}>&raquo;</span></li> }
+      </ul>
     </div>
   )
 }
