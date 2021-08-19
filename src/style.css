@@ -49,7 +49,9 @@ header nav h1 {
   font-size: 32px;
   text-align: center;
 }
-
+header nav h1 a{
+  color: #fff;
+}
 header .container {
   position: relative;
 }
@@ -204,6 +206,7 @@ footer p{
   grid-template-columns: repeat(12,1fr);
   row-gap: 50px;
   column-gap: 50px;
+  margin-top: 20px;
 }
 
 .profile-img{
@@ -233,10 +236,14 @@ footer p{
     margin-bottom: 25px;
     text-align: center;
 }
-.quotes p{
+.quotes li{
   text-align: center;
-  margin: 15px 0;
-  font-size: 18px;
+  margin: 10px 0;
+  list-style: none;
+  padding: 10px;
+}
+.quotes li:hover{
+  box-shadow: 1px 1px 2px #aaa, -1px -1px 2px #aaa;
 }
 
 

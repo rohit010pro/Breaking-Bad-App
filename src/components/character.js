@@ -24,26 +24,35 @@ const Character = () => {
     }, [character]);
 
     return (
-        <div className="container">
-            <h1>{character.name} </h1>
-            <p>{character.birthday} </p>
-            <p>{character.occupation} </p>
-            <p>{character.status} </p>
-            <p>{character.nickname} </p>
-            <p>{character.appearance} </p>
-            <p>{character.portrayed} </p>
-            <br /><br />
-            {
-                character.name !== undefined ?
-                    <div>
-                        <h2>{`${character.name}'s Quotes`}</h2>
-                        <ul>
-                            {quotes.map(quote => <li key={quote.quote_id}>{quote.quote}</li>)}
-                        </ul>
+        <main>
+            <div class="container">
+                <div class="profile">
+                    <div class="profile-img">
+                        <img src={character.img} alt={character.name} />
                     </div>
-                    : "No Quote Found"
-            }
-        </div>
+                    <div class="profile-bio">
+                        <h1>{`${character.name} (${character.nickname})`}</h1>
+                        <div><b>DOB: </b> {character.birthday} </div>
+                        <div><b>Occupation: </b> {character.occupation} </div>
+                        <div><b>Status: </b> {character.status} </div>
+                        <div><b>Portrays: </b> {character.portrayed} </div>
+                        <div><b>Season: </b> {character.name !== undefined && character.appearance.join(", ")} </div>
+                    </div>
+                    <div class="quotes">
+                        {
+                            character.name !== undefined ?
+                                <>
+                                    <h1>{`${character.name}'s Quotes`}</h1>
+                                    <ul>
+                                        {quotes.map(quote => <li key={quote.quote_id}>{quote.quote}</li>)}
+                                    </ul>
+                                </>
+                                : "No Quote Found"
+                        }
+                    </div>
+                </div>
+            </div>
+        </main>
     )
 }
 

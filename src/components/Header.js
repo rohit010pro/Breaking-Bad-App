@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <>
             <header>
                 <div class="container">
                     <nav>
-                        <h1>Breaking Bad</h1>
+                        <h1>
+                            <Link to="/">Breaking Bad</Link>
+                        </h1>
                         <div id="search-icon">
                             <span id="search" class="material-icons">search</span>
                             <span id="close" class="material-icons">close</span>
