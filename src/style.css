@@ -1,15 +1,29 @@
+:root{
+  --primary-color : #333;
+  --secondary-color : orangered;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
-body {
-  padding-top: 80px;
-}
+
 .container {
+  padding: 0 15px;
   margin: 0 auto;
-  padding: 10px 15px;
+}
+a{
+  text-decoration: none;
+}
+
+body {
+  padding-top: 90px;
+}
+
+main{
+  min-height: calc(100vh - 140px);
 }
 
 header {
@@ -18,25 +32,121 @@ header {
   left: 0;
   width: 100%;
   height: 80px;
-  background-color: #fff;
-  box-shadow: 0 0 3px 3px #f1f1f1;
+  background-color: var(--primary-color);
+  color: #fff;
+  transition: top 0.5s ease-in-out;
 }
-header h1 {
-  font-size: 36px;
-  line-height: 80px;
-  text-align: center;
-  flex-grow: 1;
-}
-header .container {
+
+header nav {
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0;
 }
 
-.search-icon {
-  font-size: 26px;
+header nav h1 {
+  flex-grow: 1;
+  font-size: 32px;
+  text-align: center;
+}
+
+header .container {
+  position: relative;
+}
+
+/* Search Section */
+
+#search-icon {
+  font-size: 24px;
   cursor: pointer;
+}
+
+#search-icon #close {
+  display: none;
+}
+
+#search-icon.active #search {
+  display: none;
+}
+#search-icon.active #close {
+  display: block;
+}
+
+#search-box {
+  position: absolute;
+  right: 0;
+  bottom: -80px;
+  padding: 10px;
+  height: 70px;
+  width: 300px;
+  background-color: #e1e1e1;
+  display: flex;
+  border-top: 3px solid var(--secondary-color);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+#search-box.show {
+  bottom: -70px;
+  visibility: visible;
+  opacity: 1;
+}
+
+#search-box::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  z-index: -1;
+  height: 20px;
+  width: 20px;
+  transform: rotate(45deg);
+  background-color: var(--secondary-color);
+  transition: none;
+}
+
+#search-input {
+  flex-grow: 1;
+  padding: 0 12px;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+}
+
+#search-btn {
+  padding: 0 10px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+
+/* Scroll to Top Button */
+
+#scrollToTopBtn {
+  position: fixed;
+  right: -50px;
+  bottom: 30px;
+  z-index: 99;
+  height: 45px;
+  width: 45px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: var(--secondary-color);
+  transition: all 0.3s ease-out;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+#scrollToTopBtn.show {
+  right: 20px;
+}
+
+.character-wrapper a{
+  color: #000;
 }
 
 .character {
@@ -62,19 +172,73 @@ header .container {
   margin-top: 5px;
   margin-bottom: 15px;
 }
+.character .char-bio h3 a{
+  color: #222;
+}
+.character .char-bio h3 a:hover{
+  color: var(--secondary-color);
+}
+
 .character .char-bio div {
   margin-top: 12px;
 }
 
-footer {
-  padding: 20px 0;
-  background-color: #f2f2f2;
+.character .char-bio div b{
+  color: #333;
 }
 
-footer p {
-  font-size: 14px;
-  text-align: center;
+footer{
+    color: #fff;
+    background-color: var(--primary-color);
 }
+
+footer p{
+    padding: 15px 0;
+    text-align: center;
+}
+
+
+/* Profile Page */
+.profile{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  row-gap: 50px;
+  column-gap: 50px;
+}
+
+.profile-img{
+  grid-column: 1/4;
+}
+.profile-img img{
+  height: 100%;
+  width: 100%;
+}
+
+.profile-bio{
+  grid-column: 4/13;
+}
+.profile-bio h1{
+  margin-bottom: 20px;
+}
+.profile-bio > div{
+  font-size: 17px;
+  margin: 15px 0;
+}
+
+.quotes{
+  grid-column: 1/13;
+  grid-row: 2/3;
+}
+.quotes h1{
+    margin-bottom: 25px;
+    text-align: center;
+}
+.quotes p{
+  text-align: center;
+  margin: 15px 0;
+  font-size: 18px;
+}
+
 
 /* Pagination */
 .pagination {
@@ -98,22 +262,48 @@ footer p {
   background-color: #333;
 }
 
+
 /* ###  Media Queries  ### */
 
 @media screen and (max-width: 576px) {
   .container {
     width: 100%;
   }
+  #search-box {
+    width: 100%;
+  }
+  .character{
+    row-gap: 15px;
+    flex-direction: column;
+  }
+  .character .char-img{
+    margin: 0 auto;
+  }
+  .character .char-bio h3{
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 577px) {
   .container {
-    width: 95%;
+    width: 540px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 720px;
   }
 }
 
 @media screen and (min-width: 992px) {
   .container {
-    width: 85%;
+    width: 960px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1140px;
   }
 }

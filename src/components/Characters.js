@@ -1,22 +1,31 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Characters = (props) => {
-  const characters = props.characters;
-  const isDataLoading = props.loading;
+const Characters = () => {
+  const [isDataLoading, setDataLoading] = useState(true);
+  const [characters, setCharacters] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemPerPage, setItemPerPage] = useState(10);
+  const itemPerPage = 10;
+
+  useEffect(() => {
+    fetch("https://breakingbadapi.com/api/characters")
+      .then(res => res.json())
+      .then(data => {
+        setCharacters(data);
+        setDataLoading(false);
+      });
+  }, []);
+
 
   const handleClick = (e) => {
     setCurrentPage(Number(e.target.id));
   }
-
   const previous = () => {
-    setCurrentPage(currentPage -1);
+    setCurrentPage(currentPage - 1);
   }
   const next = () => {
-    setCurrentPage(currentPage +1);
+    setCurrentPage(currentPage + 1);
   }
 
   const pages = [];
@@ -39,16 +48,20 @@ const Characters = (props) => {
         isDataLoading ?
           <h1>Loading...</h1>
           :
-          <div className="characters">
+          <div className="character-wrapper">
             {
               currentItems.length > 0 ?
                 currentItems.map(character => (
                   <div className="character" key={character.char_id}>
                     <div className="char-img">
-                      <img src={character.img} alt={character.name} />
+                      <Link to={'character/' + character.char_id}>
+                        <img src={character.img} alt={character.name} />
+                      </Link>
                     </div>
                     <div className="char-bio">
-                      <Link to={'character/' + character.char_id}><h3>{character.name}</h3></Link>
+                      <h3>
+                        <Link to={'character/' + character.char_id}>{character.name}</Link>
+                      </h3>
                       <div><b>Occupation: </b>{character.occupation.map(work => (work + ", "))}</div>
                       <div><b>DOB: </b>{character.birthday}</div>
                       <div><b>Status: </b>{character.status}</div>
@@ -59,10 +72,11 @@ const Characters = (props) => {
             }
           </div>
       }
+
       <ul className="pagination">
-        { currentPage !== 1 && <li><span class="prev" onClick={previous}>&laquo;</span></li> }
+        {currentPage !== 1 && <li><span class="prev" onClick={previous}>&laquo;</span></li>}
         {pageNumbers}
-        { currentPage !== pages.length && <li><span class="next" onClick={next}>&raquo;</span></li> }
+        {currentPage !== pages.length && <li><span class="next" onClick={next}>&raquo;</span></li>}
       </ul>
     </div>
   )
