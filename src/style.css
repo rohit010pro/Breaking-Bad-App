@@ -61,6 +61,7 @@ header .container {
 #search-icon {
   font-size: 24px;
   cursor: pointer;
+  user-select: none;
 }
 
 #search-icon #close {
