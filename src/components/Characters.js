@@ -47,7 +47,7 @@ const Characters = () => {
       <div className="container">
         {
           isDataLoading ?
-            <h1>Loading...</h1>
+            <h1 style={{textAlign:"center"}}>Loading...</h1>
             :
             <div className="character-wrapper">
               {
