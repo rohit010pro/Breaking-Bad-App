@@ -75,9 +75,9 @@ const Characters = () => {
         }
 
         <ul className="pagination">
-          {currentPage !== 1 && <li><span class="prev" onClick={previous}>&laquo;</span></li>}
+          {currentPage !== 1 && <li><span className="prev" onClick={previous}>&laquo;</span></li>}
           {pageNumbers}
-          {currentPage !== pages.length && <li><span class="next" onClick={next}>&raquo;</span></li>}
+          {currentPage !== pages.length && <li><span className="next" onClick={next}>&raquo;</span></li>}
         </ul>
       </div>
     </main>

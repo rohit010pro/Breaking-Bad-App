@@ -1,21 +1,26 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 const Header = () => {
+    const [isSearchShow, setSearchShow] = useState(false);
+
     return (
         <>
             <header>
-                <div class="container">
+                <div className="container">
                     <nav>
-                        <h1>
-                            <Link to="/">Breaking Bad</Link>
-                        </h1>
-                        <div id="search-icon">
-                            <span id="search" class="material-icons">search</span>
-                            <span id="close" class="material-icons">close</span>
+                        <h1><Link to="/">Breaking Bad</Link></h1>
+                        <div id="search-icon" onClick={() => setSearchShow(true ? false : true)}>
+                            {
+                            isSearchShow === false ?
+                                <span id="search" className="material-icons">search</span> :
+                                <span id="close" className="material-icons">close</span>
+                            }
                         </div>
                         <div id="search-box">
                             <input id="search-input" type="search" name="search" placeholder="Search Character" />
                             <button id="search-btn">
-                                <span class="material-icons">search</span>
+                                <span className="material-icons">search</span>
                             </button>
                         </div>
                     </nav>
@@ -23,7 +28,7 @@ const Header = () => {
             </header>
 
             <button id="scrollToTopBtn" type="button">
-                <span class="material-icons">arrow_upward</span>
+                <span className="material-icons">arrow_upward</span>
             </button>
         </>
     );

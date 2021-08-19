@@ -25,12 +25,12 @@ const Character = () => {
 
     return (
         <main>
-            <div class="container">
-                <div class="profile">
-                    <div class="profile-img">
+            <div className="container">
+                <div className="profile">
+                    <div className="profile-img">
                         <img src={character.img} alt={character.name} />
                     </div>
-                    <div class="profile-bio">
+                    <div className="profile-bio">
                         <h1>{`${character.name} (${character.nickname})`}</h1>
                         <div><b>DOB: </b> {character.birthday} </div>
                         <div><b>Occupation: </b> {character.occupation} </div>
@@ -38,7 +38,7 @@ const Character = () => {
                         <div><b>Portrays: </b> {character.portrayed} </div>
                         <div><b>Season: </b> {character.name !== undefined && character.appearance.join(", ")} </div>
                     </div>
-                    <div class="quotes">
+                    <div className="quotes">
                         {
                             character.name !== undefined ?
                                 <>
