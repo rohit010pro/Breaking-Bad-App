@@ -172,6 +172,11 @@ header .container {
   width: 45px;
   background-color: orangered;
 }
+
+#search-result .no-search{
+    padding: 10px;
+    text-align: center;
+}
 /* Scroll to Top Button */
 
 #scrollToTopBtn {

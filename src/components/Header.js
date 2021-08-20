@@ -34,6 +34,9 @@ const Header = () => {
                                     <div className="item-img"></div>
                                     <h5>Search Item 3</h5>
                                 </div>
+                                {/* <div className="no-search">
+                                    <h5>No Search found</h5>
+                                </div> */}
                             </div>
                         </div>
                     </nav>
