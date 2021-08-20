@@ -48,7 +48,7 @@ const Characters = () => {
         {
           isDataLoading ?
             <div className="loader-box">
-              <h1>Loading...</h1>
+              <img src="/images/loader.gif" alt="loader"/>
             </div>
             :
             <>
