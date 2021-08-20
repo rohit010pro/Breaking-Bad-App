@@ -14,11 +14,27 @@ const Header = () => {
                             <span id="search" className="material-icons">search</span>
                             <span id="close" className="material-icons">close</span>
                         </div>
-                        <div id="search-box" className={isSearchShow ? "show" : ""}>
-                            <input id="search-input" type="search" name="search" placeholder="Search Character" />
-                            <button id="search-btn">
-                                <span className="material-icons">search</span>
-                            </button>
+                        <div id="search-wrapper" className={isSearchShow ? "show" : ""}>
+                            <div id="search-box">
+                                <input id="search-input" type="search" name="search" placeholder="Search Character" />
+                                <button id="search-btn">
+                                    <span className="material-icons">search</span>
+                                </button>
+                            </div>
+                            <div id="search-result">
+                                <div className="item">
+                                    <div className="item-img"></div>
+                                    <h5>Search Item 1</h5>
+                                </div>
+                                <div className="item">
+                                    <div className="item-img"></div>
+                                    <h5>Search Item 2</h5>
+                                </div>
+                                <div className="item">
+                                    <div className="item-img"></div>
+                                    <h5>Search Item 3</h5>
+                                </div>
+                            </div>
                         </div>
                     </nav>
                 </div>
