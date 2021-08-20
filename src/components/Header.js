@@ -47,7 +47,7 @@ const Header = () => {
                                             </div>) : (
                                             searchData.length > 0 ?
                                                 searchData.map(item => (
-                                                    <div className="item">
+                                                    <div className="item" key={item.char_id}>
                                                         <div className="item-img">
                                                             <img src={item.img} alt={item.name} />
                                                         </div>
