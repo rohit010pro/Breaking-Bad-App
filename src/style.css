@@ -170,7 +170,11 @@ header .container {
 #search-result .item .item-img{
   height: 45px;
   width: 45px;
-  background-color: orangered;
+}
+#search-result .item .item-img img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 #search-result .no-search{
