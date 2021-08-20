@@ -47,38 +47,41 @@ const Characters = () => {
       <div className="container">
         {
           isDataLoading ?
-            <h1 style={{textAlign:"center"}}>Loading...</h1>
-            :
-            <div className="character-wrapper">
-              {
-                currentItems.length > 0 ?
-                  currentItems.map(character => (
-                    <div className="character" key={character.char_id}>
-                      <div className="char-img">
-                        <Link to={'character/' + character.char_id}>
-                          <img src={character.img} alt={character.name} />
-                        </Link>
-                      </div>
-                      <div className="char-bio">
-                        <h3>
-                          <Link to={'character/' + character.char_id}>{character.name}</Link>
-                        </h3>
-                        <div><b>Occupation: </b>{character.occupation.map(work => (work + ", "))}</div>
-                        <div><b>DOB: </b>{character.birthday}</div>
-                        <div><b>Status: </b>{character.status}</div>
-                      </div>
-                    </div>
-                  ))
-                  : "No Characters Found"
-              }
+            <div className="loader-box">
+              <h1>Loading...</h1>
             </div>
+            :
+            <>
+              <div className="character-wrapper">
+                {
+                  currentItems.length > 0 ?
+                    currentItems.map(character => (
+                      <div className="character" key={character.char_id}>
+                        <div className="char-img">
+                          <Link to={'character/' + character.char_id}>
+                            <img src={character.img} alt={character.name} />
+                          </Link>
+                        </div>
+                        <div className="char-bio">
+                          <h3>
+                            <Link to={'character/' + character.char_id}>{character.name}</Link>
+                          </h3>
+                          <div><b>Occupation: </b>{character.occupation.map(work => (work + ", "))}</div>
+                          <div><b>DOB: </b>{character.birthday}</div>
+                          <div><b>Status: </b>{character.status}</div>
+                        </div>
+                      </div>
+                    ))
+                    : "No Characters Found"
+                }
+              </div>
+              <ul className="pagination">
+                {currentPage !== 1 && <li><span className="prev" onClick={previous}>&laquo;</span></li>}
+                {pageNumbers}
+                {currentPage !== pages.length && <li><span className="next" onClick={next}>&raquo;</span></li>}
+              </ul>
+            </>
         }
-
-        <ul className="pagination">
-          {currentPage !== 1 && <li><span className="prev" onClick={previous}>&laquo;</span></li>}
-          {pageNumbers}
-          {currentPage !== pages.length && <li><span className="next" onClick={next}>&raquo;</span></li>}
-        </ul>
       </div>
     </main>
   )

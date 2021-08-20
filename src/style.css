@@ -1,20 +1,20 @@
-:root{
-  --primary-color : #333;
-  --secondary-color : orangered;
+:root {
+  --primary-color: #333;
+  --secondary-color: orangered;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
   padding: 0 15px;
   margin: 0 auto;
 }
-a{
+a {
   text-decoration: none;
 }
 
@@ -22,7 +22,7 @@ body {
   padding-top: 90px;
 }
 
-main{
+main {
   min-height: calc(100vh - 140px);
 }
 
@@ -49,7 +49,7 @@ header nav h1 {
   font-size: 32px;
   text-align: center;
 }
-header nav h1 a{
+header nav h1 a {
   color: #fff;
 }
 header .container {
@@ -59,9 +59,20 @@ header .container {
 /* Search Section */
 
 #search-icon {
-  font-size: 24px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
   cursor: pointer;
   user-select: none;
+  transition: all 0.3s ease-in-out;
+}
+#search-icon:hover{
+  background-color: rgba(255,255,255,0.2);
+}
+
+#search-icon .material-icons{
+  line-height: 40px;
 }
 
 #search-icon #close {
@@ -81,7 +92,7 @@ header .container {
   bottom: -80px;
   padding: 10px;
   height: 70px;
-  width: 300px;
+  width: 350px;
   background-color: #e1e1e1;
   display: flex;
   border-top: 3px solid var(--secondary-color);
@@ -106,7 +117,6 @@ header .container {
   width: 20px;
   transform: rotate(45deg);
   background-color: var(--secondary-color);
-  transition: none;
 }
 
 #search-input {
@@ -148,7 +158,18 @@ header .container {
   right: 20px;
 }
 
-.character-wrapper a{
+.loader-box {
+  display: grid;
+  place-items: center;
+  height: calc(100vh - 200px);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+
+.character-wrapper a {
   color: #000;
 }
 
@@ -175,10 +196,10 @@ header .container {
   margin-top: 5px;
   margin-bottom: 15px;
 }
-.character .char-bio h3 a{
+.character .char-bio h3 a {
   color: #222;
 }
-.character .char-bio h3 a:hover{
+.character .char-bio h3 a:hover {
   color: var(--secondary-color);
 }
 
@@ -186,67 +207,65 @@ header .container {
   margin-top: 12px;
 }
 
-.character .char-bio div b{
+.character .char-bio div b {
   color: #333;
 }
 
-footer{
-    color: #fff;
-    background-color: var(--primary-color);
+footer {
+  color: #fff;
+  background-color: var(--primary-color);
 }
 
-footer p{
-    padding: 15px 0;
-    text-align: center;
+footer p {
+  padding: 15px 0;
+  text-align: center;
 }
-
 
 /* Profile Page */
-.profile{
+.profile {
   display: grid;
-  grid-template-columns: repeat(12,1fr);
+  grid-template-columns: repeat(12, 1fr);
   row-gap: 50px;
   column-gap: 50px;
   margin-top: 20px;
 }
 
-.profile-img{
+.profile-img {
   grid-column: 1/4;
 }
-.profile-img img{
+.profile-img img {
   height: 100%;
   width: 100%;
 }
 
-.profile-bio{
+.profile-bio {
   grid-column: 4/13;
 }
-.profile-bio h1{
+.profile-bio h1 {
   margin-bottom: 20px;
 }
-.profile-bio > div{
+.profile-bio > div {
   font-size: 17px;
   margin: 15px 0;
 }
 
-.quotes{
+.quotes {
   grid-column: 1/13;
-  grid-row: 2/3;
+  /* grid-row: 2/3; */
 }
-.quotes h1{
-    margin-bottom: 25px;
-    text-align: center;
+.quotes h1 {
+  margin-bottom: 25px;
+  text-align: center;
 }
-.quotes li{
+.quotes li {
   text-align: center;
   margin: 10px 0;
   list-style: none;
   padding: 10px;
 }
-.quotes li:hover{
+.quotes li:hover {
   box-shadow: 1px 1px 2px #aaa, -1px -1px 2px #aaa;
 }
-
 
 /* Pagination */
 .pagination {
@@ -270,7 +289,6 @@ footer p{
   background-color: #333;
 }
 
-
 /* ###  Media Queries  ### */
 
 @media screen and (max-width: 576px) {
@@ -280,14 +298,26 @@ footer p{
   #search-box {
     width: 100%;
   }
-  .character{
+}
+
+@media screen and (max-width: 992px) {
+  .profile-img,
+  .profile-bio {
+    grid-column: 1/13;
+  }
+  .profile-img {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 360px;
+  }
+  .character {
     row-gap: 15px;
     flex-direction: column;
   }
-  .character .char-img{
+  .character .char-img {
     margin: 0 auto;
   }
-  .character .char-bio h3{
+  .character .char-bio h3 {
     text-align: center;
   }
 }
